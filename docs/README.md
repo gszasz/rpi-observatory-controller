@@ -17,5 +17,8 @@ in the section entitled [GNU Free Documentation License](LICENSE).
 - [Installation](installation/README.md)
     - Thorough installation guide for the RPi-based Observatory Controller.
 
+- [Testing](testing/README.md)
+    - Useful guides for testing and deployment of the testing environment.
+
 - [GNU Free Documentation License](LICENSE)
      - Full text of GNU Free Documentation License v1.3.
