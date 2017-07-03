@@ -15,6 +15,72 @@ safe to set sudo without password for user `pi`.
         %sudo   ALL=(ALL:ALL) NOPASSWD:ALL
 
 
+## Improve configuration file of the nano editor
+
+The `nano` is fast and lightweight text editor that actually contains some neat
+features.  Unfortunatelly, the default configuration is quite limited, so it's
+generally a good idea to look at the global configuration file:
+
+    $ sudo nano /etc/nanorc
+
+I recommend to enable following subset of options.  Note that in case of `set
+tabsize` I changed default tabsize from 8 to 4.
+
+    ## Use auto-indentation.
+    set autoindent
+
+    ## Backup files to filename~.
+    set backup
+
+    ## Use bold text instead of reverse video text.
+    set boldtext
+
+    ## Do case sensitive searches by default.
+    set casesensitive
+
+    ## Constantly display the cursor position in the statusbar.  Note that
+    ## this overrides "quickblank".
+    set const
+
+    ## Use cut to end of line by default.
+    set cut
+
+    ## Use the blank line below the titlebar as extra editing space.
+    set morespace
+
+    ## Enable mouse support, if available for your system.  When enabled,
+    ## mouse clicks can be used to place the cursor, set the mark (with a
+    ## double click), and execute shortcuts.  The mouse will work in the X
+    ## Window System, and on the console when gpm is running.
+    ##
+    set mouse
+
+    ## Allow multiple file buffers (inserting a file will put it into a
+    ## separate buffer).  You must have configured with --enable-multibuffer
+    ## for this to work.
+    ##
+    set multibuffer
+
+    ## Make the Home key smarter.  When Home is pressed anywhere but at the
+    ## very beginning of non-whitespace characters on a line, the cursor
+    ## will jump to that beginning (either forwards or backwards).  If the
+    ## cursor is already at that position, it will jump to the true
+    ## beginning of the line.
+    # set smarthome
+
+    ## Use smooth scrolling as the default.
+    set smooth
+
+    ## Use this tab size instead of the default; it must be greater than 0.
+    set tabsize 4
+
+    ## Convert typed tabs to spaces.
+    set tabstospaces
+
+    ## Enable the new (EXPERIMENTAL) generic undo code, not just for line cuts
+    set undo
+
+
 ## Quick setup using raspi-config tool
 
 Raspbian comes with `raspi-config` tool for quick setup.
@@ -231,11 +297,19 @@ maintenance of the observatory controller.
 
     $ sudo apt-get install -y wget tmux mc
 
-I personally prefer Emacs for editing files, so I usually also install the
-following:
 
-    $ sudo apt-get install emacs-nox emacs-goodies-el
-    $ git clone https://github.com/gszasz/dotemacs.git ~/.emacs.d
+Improve `nano` editor settings:
+
+    $ sudo nano /etc/nanorc
+
+    ## Use auto-indentation.
+    set autoindent
+
+    ## Backup files to filename~.
+    set backup
+
+    ## Use bold text instead of reverse video text.
+    set boldtext
 
 
 ## Install extra RPi tools
