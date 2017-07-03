@@ -14,26 +14,51 @@ safe to set sudo without password for user `pi`.
         # Allow members of group sudo to execute any command
         %sudo   ALL=(ALL:ALL) NOPASSWD:ALL
 
+3. Press `Ctrl-X`, then `y` and `ENTER` to confirm.
+
 
 ## Improve configuration file of the nano editor
 
-The `nano` is fast and lightweight text editor that actually contains some neat
-features.  Unfortunatelly, the default configuration is quite limited, so it's
-generally a good idea to look at the global configuration file:
+`nano` is quick and lightweight text editor, powerful enough to edit
+configuration files and do some coding.  Since Raspbian already uses it as a
+default editor, I will keep using it throughout this documentation.  Nano uses
+bottom lines of the screen to show important keystrokes.  Note that they are
+written in UNIX notation (e.g. `^X` translates to `Ctrl-X`).  Following table
+summarizes the most important ones:
+
+| Keystroke | Function                      | Description                     |
+| --------- | ----------------------------- | ------------------------------- |
+| `Ctrl-X`  | `Exit`                        | Save file and Exit              |
+| `Ctrl-O`  | `Write Out`                   | Save file as                    |
+| `Ctrl-W`  | `Where Is`                    | Search                          |
+| `Alt-W`   | `Repeat Search`               | Search next                     |
+| `Alt-R`   | `Replace Text`                | Search and replace              |
+| `Ctrl-K`  | `Cut`                         | Cut line(s) / Cut selection     |
+| `Ctrl-U`  | `UnCut`                       | Paste line(s) / Paste selection |
+| `Ctrl-^`  | `Set Mark`                    | Start selection                 |
+| `Alt-^`   | `Copy`                        | Copy text of the selection      |
+| `Alt-G`   | `Go to line/column`           | Move to given position          |
+| `Ctrl-R`  | `Insert File into new buffer` | Open another file               |
+| `Alt->`   | `Switch to next buffer`       | Switch opened files forward     |
+| `Alt-<`   | `Switch to previous buffer`   | Switch opened files backward    |
+
+The last two keystrokes are actually `Alt-.` and `Alt-,`.  There is no need to
+hold `Shift`.  The same applies to shortcuts `Ctrl-^` and `Alt-^` for selecting
+and copying text.  Vast majority of people press `Ctrl-6` and `Alt-6` instead.
+
+The default configuration is quite limited, so it's generally a good idea to
+look at the global configuration file and tweak it a little bit:
 
     $ sudo nano /etc/nanorc
 
 I recommend to enable following subset of options.  Note that in case of `set
-tabsize` I changed default tabsize from 8 to 4.
+tabsize` I prefer tab size 4 instead of default 8.
 
     ## Use auto-indentation.
     set autoindent
 
     ## Backup files to filename~.
     set backup
-
-    ## Use bold text instead of reverse video text.
-    set boldtext
 
     ## Do case sensitive searches by default.
     set casesensitive
@@ -42,18 +67,8 @@ tabsize` I changed default tabsize from 8 to 4.
     ## this overrides "quickblank".
     set const
 
-    ## Use cut to end of line by default.
-    set cut
-
     ## Use the blank line below the titlebar as extra editing space.
     set morespace
-
-    ## Enable mouse support, if available for your system.  When enabled,
-    ## mouse clicks can be used to place the cursor, set the mark (with a
-    ## double click), and execute shortcuts.  The mouse will work in the X
-    ## Window System, and on the console when gpm is running.
-    ##
-    set mouse
 
     ## Allow multiple file buffers (inserting a file will put it into a
     ## separate buffer).  You must have configured with --enable-multibuffer
@@ -296,20 +311,6 @@ There are some essential packages that are generally useful for debugging and
 maintenance of the observatory controller.
 
     $ sudo apt-get install -y wget tmux mc
-
-
-Improve `nano` editor settings:
-
-    $ sudo nano /etc/nanorc
-
-    ## Use auto-indentation.
-    set autoindent
-
-    ## Backup files to filename~.
-    set backup
-
-    ## Use bold text instead of reverse video text.
-    set boldtext
 
 
 ## Install extra RPi tools
