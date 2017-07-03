@@ -6,6 +6,7 @@ Observatory Controller.
 ## Contents
 
 - [Installing Raspbian Lite](installing-raspbian-lite.md)
+- [GNU nano Quick Reference](gnu-nano-quick-reference.md)
 - [Getting Online](getting-online.md)
 - [Initial System Setup](initial-system-setup.md)
 - [INDIGO Server Setup](indigo-server-setup.md)
