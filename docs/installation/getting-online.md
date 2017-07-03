@@ -10,11 +10,21 @@ network.  You need to setup network manually in old-school Debian way.
 For testing and compilation purposes it can be useful to temporarily connect
 Raspberry Pi box to local wi-fi network.
 
-1. Disable wireless interface.
+1. Convince yourself that the interface `wlan0` is defined.
 
-        $ sudo ifdown wlan0
+        $ sudo nano /etc/network/interfaces
 
-2. Add new connection to `wpa_supplicant.conf`.
+   The file should contain following lines:
+
+        allow-hotplug wlan0
+        iface wlan0 inet manual
+            wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+2. Fire up the `wlan0` interface
+
+        $ sudo ifup wlan0
+
+3. Define new connection to `wpa_supplicant.conf`.
 
         $ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 
@@ -27,9 +37,21 @@ Raspberry Pi box to local wi-fi network.
             key_mgmt=WPA-PSK
         }
 
-3. Bring wireless interface back online.
+4. Reconfigure `wpa_supplicant`.
 
-        $ sudo ifup wlan0
+        $ sudo wpa_cli reconfigure
+
+5. Check if the `wlan0` interface received an IP address.
+
+        $ ifconfig
+        wlan0     Link encap:Ethernet  HWaddr b8:27:eb:d3:65:d2
+                  inet addr:10.200.136.38  Bcast:10.200.139.255  Mask:255.255.252.0
+                  inet6 addr: fe80::d877:a0ac:9f28:ac15/64 Scope:Link
+                  UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+                  RX packets:3114 errors:0 dropped:200 overruns:0 frame:0
+                  TX packets:3577 errors:0 dropped:0 overruns:0 carrier:0
+                  collisions:0 txqueuelen:1000
+                  RX bytes:324640 (317.0 KiB)  TX bytes:587899 (574.1 KiB)
 
 Note that wireless connection should be used only for testing and development.
 
