@@ -8,9 +8,9 @@
 
 ## Write system the SD Card
 
-Minimum SD card capacity should be 8 GB and has to be on the compatibility list
-for Raspberry Pi 3.  Check http://elinux.org/RPi_SD_cards for more details.  The
-SD card has to be freshly formatted prior dd command.
+Note that minimum SD card capacity should be 8 GB and has to be on the
+[compatibility list for Raspberry Pi](http://elinux.org/RPi_SD_cards).  The SD
+card has to be freshly formatted prior dd command.
 
     $ sudo dd bs=4M if=2017-06-21-raspbian-jessie.img of=/dev/mmcblk0 status=progress
 
