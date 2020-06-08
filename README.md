@@ -18,7 +18,7 @@ observatory controller.
 
 [Project documenation](docs/README.md) is available online via GitHub Pages:
 
--  http://gszasz.github.io/rpi-observatory-controller/
+-  https://szasz.space/rpi-observatory-controller/
 
 
 ## License
